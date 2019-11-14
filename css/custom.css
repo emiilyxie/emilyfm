@@ -28,7 +28,7 @@ a:focus  {
 }
 
 .greeting {
-	min-height: 100vh;
+	height: 60vh;
 	text-align: center;
 	margin-top: 30vh;
 }
@@ -38,12 +38,40 @@ a:focus  {
 .greeting-text:focus {
 	font-size: 7em;
 	transition: all 0.2s;
-	Font-Family: 'Alegreya', Serif;
 	font-weight: bold;
+    color: black;
 }
 
-.greeting-text:hover {
-	color: #fea49f;
+.shiny {
+    background: linear-gradient(212deg, #fbaf08, #00a0a0, #007f4f, #101357, #fea49f);
+  background-size: 1000% 1000%;
+
+  -webkit-animation: AnimationName 14s ease infinite;
+  -moz-animation: AnimationName 14s ease infinite;
+  animation: AnimationName 14s ease infinite;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: white;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  transition: color 200ms linear;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:87% 0%}
+    50%{background-position:14% 100%}
+    100%{background-position:87% 0%}
 }
 
 /* Specific Divs */
@@ -58,7 +86,6 @@ a:focus  {
     letter-spacing: 3px;
     opacity: 0.8;
     min-height:5px !important;
-		font-family: 'Alegreya', serif;
 }
 
 .nav>li>a:focus,
@@ -68,6 +95,11 @@ a:focus  {
 
 .navbar-toggle {
 	color: black;
+}
+
+a.ref-links {
+    position: relative;
+    display: inline-block;
 }
 
 a.ref-links,
@@ -121,14 +153,14 @@ a.ref-links:hover {;
 }
 
 .empty-item {
-	margin-bottom: 60px;
-  width: 300px;
-	height: 300px;
-  flex: 0 1 auto;
-  padding: 15px;
-  background-color: rgba(255,255,255,0.5);
-  box-shadow: 0 0 0 0 rgba(240,240,240,0);
-  border-radius: 15px;
+    margin-bottom: 60px;
+    width: 300px;
+    height: 300px;
+    flex: 0 1 auto;
+    padding: 15px;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 0 0 0 0 rgba(240,240,240,0);
+    border-radius: 15px;
 }
 
 .science:hover {

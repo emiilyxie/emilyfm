@@ -1,0 +1,110 @@
+
+html, body {
+	height: 100%;
+  color: black;
+  line-height: 1.8;
+  font-family: 'Lexend Deca', sans-serif;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+.navbar,
+.navbar:hover
+.navbar:focus {
+    margin-bottom: 0;
+    background-color: white;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 3px;
+    opacity: 0.8;
+    min-height:5px !important;
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover {
+	background-color: white;
+}
+
+.navbar-toggle {
+	color: black;
+}
+
+a.ref-links,
+a.ref-links:visited,
+a.ref-links:active
+a.ref-links:focus {
+	color: black;
+	transition: 0.3s all;
+}
+
+a.ref-links:hover {;
+	background-color: white;
+	opacity: 0.8;
+	color: #fea49f;
+}
+
+a,
+a:hover,
+a:active,
+a:focus  {
+	text-decoration: none;
+	color: black;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.activity-header {
+  font-size: 60px;
+  background: -webkit-linear-gradient(45deg, blue, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 70px;
+}
+
+.opening-blurb {
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+.image-box {
+  margin-top: 20px;
+}
+
+.main-text {
+  margin-top: 30px;
+}
+
+.image-caption {
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.text-head {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.gallery {
+  display: flex;
+  width: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gallery-item {
+  width: 300px;
+	height: 300px;
+  flex: 0 1 auto;
+  padding: 15px;
+}
+
+.end-space {
+  height: 50px;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/activities.css">
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Alegreya|Lexend+Deca&display=swap" rel="stylesheet">
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  	<title>✌ FitBit</title>
+	</head>
+
+	<body>
+		<!-- Navigation bar -->
+        <nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				<a class="navbar-brand ref-links page-scroll" href="../index.html">emily xie</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a class="ref-links page-scroll" href="./about.html">about me</a>
+					</li>
+					<li>
+						<a class="ref-links page-scroll" href="./contact.html">contact</a>
+					</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+    <div class="activity-header">FitBit Developer</div>
+    <div class="opening-blurb">I guess you could call me a smartwatch app developer now. I
+      coded a simple metronome app that vibrates a custom tempo on your wrist. This convenient
+      metronome can be used during rehearsals, audition recordings, and steady jogs.</div>
+    <div class="main-text">
+      <div class="text-head">Inspiration</div>
+      <div class="text-body">
+        A little while ago, I downloaded a metronome app called Soundbrenner (cause the
+        app logo looked prettier than the other metronome app that everyone else used). On
+        the app, there was a metronome specific watch, which I thought was a cool idea, but
+        it costs several hundred dollars. Still intrigued by the function, and with my mom
+        working at FitBit, I made it my mission to code a metronome on a FitBit for free.
+      </div>
+      <div class="text-head">Challenges</div>
+      <div class="text-body">
+        As simple as the metronome app seemed, coding the app came with difficulty. I’m not an expert
+        at javascript -- I taught myself the language (what a flex). After figuring out how to design
+        FitBit interfaces and create a button, the task of actually coding the metronome came upon me.
+        I struggled with various while loops to toggle the metronome, which crashed the app. I came
+        across the setInterval() function. When I first used the function, instead of crashing the app,
+        my code would cause the metronome to start but never to stop. That means on my app, I’d have
+        several metronomes running simultaneously at the same bpm, like a jagged doubletime tempo. To
+        solve this problem of multiple metronomes, I created a more global interval timer. That way, I
+        coded functions that could start and stop the global interval timer instead of creating many
+        local ones. Here’s the index.js, cause I’m too lazy to put it onto Github right now: <br><br>
+        <pre>
+import document from "document";
+import { vibration } from "haptics";
+
+let demotext = document.getElementById("demotext");
+demotext.text = 100;
+var speed = 100;
+
+let fasterButton = document.getElementById("faster-button");
+fasterButton.onclick = function() {
+  if (speed < 400) {
+    var temp = parseInt(demotext.text) + 1;
+    demotext.text = temp;
+    speed++;
+  }
+  if (isPlaying) {
+    clearInterval(timer);
+    timer = setInterval(start, speedMs(speed));
+  }
+  //console.log("add speed");
+}
+
+let slowerButton = document.getElementById("slower-button");
+slowerButton.onactivate = function(evt) {
+  if (speed > 40) {
+    demotext.text -= 1;
+    speed--;
+  }
+  if (isPlaying) {
+    clearInterval(timer);
+    timer = setInterval(start, speedMs(speed));
+  }
+  //console.log("subtract speed");
+}
+
+let toggleButton = document.getElementById("toggle-button");
+toggleButton.onclick = startStop;
+var isPlaying = false;
+var timer;
+
+function startStop() {
+  if (isPlaying) {
+    clearInterval(timer);
+    isPlaying = false;
+  }
+  else {
+    timer = setInterval(start, speedMs(speed));
+    isPlaying = true;
+  }
+}
+
+function start() {
+  vibration.start("confirmation");
+}
+
+function speedMs(bpm) {
+  return 60000/bpm;
+}
+
+document.onkeypress = function(e) {
+  //console.log(e.key);
+  var directionStr = e.key;
+  //console.log(directionStr);
+  if (directionStr === "up"){
+    //console.log("more speed");
+    if (speed < 400) {
+      var temp = parseInt(demotext.text) + 1;
+      demotext.text = temp;
+      speed++;
+    }
+    if (isPlaying) {
+      clearInterval(timer);
+      timer = setInterval(start, speedMs(speed));
+    }
+  }
+  else if (directionStr === "down"){
+    //console.log("less speed");
+    if (speed > 40) {
+      demotext.text -= 1;
+      speed--;
+    }
+    if (isPlaying) {
+      clearInterval(timer);
+      timer = setInterval(start, speedMs(speed));
+    }
+  }
+}
+        </pre>
+      </div>
+      <div class="end-space"></div>
+    </div>
+
+
+		<script src="../js/jquery.js"></script>
+	  <script src="../js/bootstrap.min.js"></script>  <!-- Bootstrap Core JavaScript -->
+		<script src="../js/jquery.easing.min.js"></script> <!-- Plugin JavaScript -->
+	  <script src="../js/jquery.fittext.js"></script>
+	  <script src="../js/wow.min.js"></script>
+	  <script src="../js/creative.js"></script> <!-- Custom Theme Javascript -->
+
+	</body>
+</html>
