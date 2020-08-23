@@ -1,11 +1,12 @@
 
 html, body {
-	height: 100%;
-  color: black;
-  line-height: 1.8;
-  font-family: 'Lexend Deca', sans-serif;
-  margin-left: 7%;
-  margin-right: 7%;
+    height: 100%;
+    color: #636e72;
+    background-color: #eff4fa;
+    line-height: 1.8;
+    font-family: 'Lexend Deca', sans-serif;
+    margin-left: 7%;
+    margin-right: 7%;
 }
 
 .navbar,
@@ -29,11 +30,14 @@ html, body {
 	color: black;
 }
 
+.ref-links {
+    color: #636e72
+}
+
 a.ref-links,
 a.ref-links:visited,
 a.ref-links:active
 a.ref-links:focus {
-	color: black;
 	transition: 0.3s all;
 }
 
@@ -48,7 +52,6 @@ a:hover,
 a:active,
 a:focus  {
 	text-decoration: none;
-	color: black;
 }
 
 img {
@@ -58,15 +61,31 @@ img {
 
 .activity-header {
   font-size: 60px;
+  color: black;
+  /*
+  border-radius: 20px;
+  background: #eff4fa;
+  box-shadow:  5px 5px 10px #dce0e6,
+         -5px -5px 10px #ffffff;
+padding-left: 30px;
+    padding-right: 30px;
   background: -webkit-linear-gradient(45deg, blue, red);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  */
   margin-top: 70px;
+
 }
 
 .opening-blurb {
   margin-top: 10px;
   font-size: 22px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image-box {
@@ -85,6 +104,7 @@ img {
 }
 
 .text-head {
+  color: black;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;

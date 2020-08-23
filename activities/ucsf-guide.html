@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/activities.css">
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Alegreya|Lexend+Deca&display=swap" rel="stylesheet">
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  	<title>✌ UCSF Internship</title>
+	</head>
+
+	<body>
+		<!-- Navigation bar -->
+        <nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				<a class="navbar-brand ref-links page-scroll" href="../index.html">emily xie</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a class="ref-links page-scroll" href="./about.html">about me</a>
+					</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+    <p class="activity-header">UCSF Internship - Presentation Guide</p>
+    <div class="opening-blurb">Use this page along with my UCSF presentation.</div>
+    <div class="main-text">
+      <div class="text-head">Introduction</div>
+      <div class="image-box">
+          <img src="../img/ucsf-img/pg2.jpg"></img>
+      </div>
+      <div class="text-body">
+        <br>MRSI stands for magnetic resonance spectroscopic imaging. Basically, it's a tool that lets you detect
+        all sorts of chemicals and metabolites in a scan of the brain, noninvasively.<br><br>
+        In the figure on the left, you see a brain. That brain was scanned using an MRI scanner. On top of the
+        brain, you see a grid. That grid is the data from the MRSI scanner. <br><br>
+        There's a red box on the grid, and on the right of the brain, that's the same red box but zoomed in. There are
+        9 "voxels," aka 3d pixels, in the red box. Each voxel contains a squiggly line -- that squiggly line is a
+        spectrum, where the x-axis represents frequency and the y-axis represents amplitude. Using the spectrum,
+        you can see the different metabolites in the brain. For example, the three peaks in the spectrum down below
+        represent Choline (Cho), Creatine (Cr), and N-acetylaspartate (NAA).<br><br>
+        However, artifacts sometimes arise in MRSI. Basically, the MRSI spectrum gets a little distorted and messed up.
+        This happens because of many reasons, such as the ones in the list on the left: tissue boundary, field inhomogenity,
+        insufficient lipid suppression, etc.<br><br>
+        There's a lot of types of these artifacts, but researchers need to filter out all of these artifacts to be able
+        to use MRSI data. Right now, they need to look at each individual voxel to filter out each individual artifact.
+        You can imagine, this will definitely be very time consuming for brain scans that have thousands of voxels.<br><br>
+        To help with this, I decided to create a machine learning (ML) model that can automatically filter artifacts from MRSI,
+        which will significantly reduce the time spent reviewing spectra!<br><br>
+        For more information about MRSI, check out this paper:
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3416028/" target="_blank"><u>MR Spectroscopy and Spectroscopic Imaging of the Brain</u></a>
+      </div>
+      <div class="text-head">Methods - Data</div>
+      <div class="image-box">
+          <img src="../img/ucsf-img/pg3.jpg"></img>
+      </div>
+      <div class="text-body">
+         <br>I had 50 datasets to train the ML model. There was a big variety of patients: they had different diseases (depression,
+         multiple sclerosis, etc.) and different scan types (brain tumor patient was acquired at 3T instead of 7T).<br><br>
+         Each voxel was labelled as "bad," if it contained an artifact, or "usable," all the rest of the voxels. The voxels
+         were labelled with some MRSI preprocessing algorithms, and after, Dr. Li went and manually labelled some more voxels.
+         The two label classes were actually very balanced!<br><br>
+         Most of the patients had brain atlas data. The brain atlas provided information about which part of the brain
+         a given voxel is in.
+      </div>
+      <div class="text-head">Methods - Model</div>
+      <div class="image-box">
+          <img src="../img/ucsf-img/pg4.jpg"></img>
+      </div>
+      <div class="text-body">
+          <br>I had to preprocess the data of each spectra before putting it all in the ML model. I scaled each voxel to a reasonable range
+          and split the voxel so that in was in the frequency range of interest (4.1 ppm to 1.8 ppm).<br><br>
+          Next, I separated each voxel into 5 regions based on known metabolite peaks. Each region independently went through some
+          convolutional layers for feature extraction. After the convolutions, the 5 regions were concatenated back together along with
+          the brain atlas data.<br><br>
+          I represented the brain atlas data as a one-hot encoded vector (like what they do in natural language processing). Each vector
+          corresponded to one of the following brain regions: cortical, subcortical, white matter, and cerebrospinal fluid.<br><br>
+          This concatenation went through a couple more dense layers until it reached an output probability of usable and bad.
+      </div>
+      <div class="text-head">Results</div>
+      <div class="image-box">
+          <img src="../img/ucsf-img/pg5.jpg"></img>
+      </div>
+      <div class="text-body">
+          <br>I trained 3 models. The first two are basically comparing models trained with or without the brain atlas. The last model
+          includes all the different patients and scan types. The top two figures show some metrics for the last model. The metrics
+          that I focused on -- accuracy, ROC AUC, sensitivity, and specificity -- were very similar across all three models. Speaking
+          of ROC AUC, we compared it to a published paper and found that the metric was the same. One important thing -- the paper
+          only trained and evaluated on one type of patient and one type of scan (brain tumor at 7T).
+      </div>
+      <div class="text-head">Discussion</div>
+      <div class="image-box">
+          <img src="../img/ucsf-img/pg6.jpg"></img>
+      </div>
+      <div class="text-body">
+          <br>From the results, I first saw that adding in brain atlas data barely affected the model.<br>
+          Next, I saw that I successfully trained a model that can filter artifacts in MRSI. Additionally, this model can do this for
+          many types of patients and different types of scans, which makes it a lot more flexible than the current works!
+      </div>
+      <div class="text-head">Thanks!</div>
+      <div class="text-body">
+        Huge thanks to Dr. Yan Li and Dr. Huawei Liu for teaching me all about MRSI in this internship. Also,
+        a big thanks to the rest of the group that I worked with -- I got to listen to their own MRSI projects,
+        which was also very interesting!
+      </div>
+      <div class="end-space"></div>
+    </div>
+
+
+		<script src="../js/jquery.js"></script>
+	  <script src="../js/bootstrap.min.js"></script>  <!-- Bootstrap Core JavaScript -->
+		<script src="../js/jquery.easing.min.js"></script> <!-- Plugin JavaScript -->
+	  <script src="../js/jquery.fittext.js"></script>
+	  <script src="../js/wow.min.js"></script>
+	  <script src="../js/creative.js"></script> <!-- Custom Theme Javascript -->
+
+	</body>
+</html>

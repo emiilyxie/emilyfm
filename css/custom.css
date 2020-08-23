@@ -12,11 +12,12 @@ Bold 2019 Green: #007f4f
 
 html, body {
 	height: 100%;
-  color: black;
+  color: #636e72;
   line-height: 1.8;
   font-family: 'Lexend Deca', sans-serif;
 	margin-left: 5%;
 	margin-right: 5%;
+    background-color: #eff4fa;
 }
 
 a,
@@ -106,7 +107,7 @@ a.ref-links,
 a.ref-links:visited,
 a.ref-links:active
 a.ref-links:focus {
-	color: black;
+	color: #636e72;
 	transition: 0.3s all;
 }
 
@@ -130,26 +131,59 @@ a.ref-links:hover {;
 }
 
 .item {
-	margin-bottom: 60px;
-  width: 300px;
-	height: 300px;
-  flex: 0 1 auto;
-  padding: 15px;
+    margin-bottom: 60px;
+    width: 300px;
+    height: 300px;
+    flex: 0 1 auto;
+    /*padding: 15px;*/
+    border-radius: 50px;
+    background: #eff4fa;
+    box-shadow:  5px 5px 10px #dce0e6,
+           -5px -5px 10px #ffffff;
+  /*
   background-color: rgba(255,255,255,0.5);
   box-shadow: 0 0 0 0 rgba(240,240,240,0);
   border-radius: 15px;
 	border: 6px solid black;
-  transition: all 0.2s ease;
+    */
+    transition: all 0.2s ease;
 }
 
 .item:hover {
 	 margin-top: -5px;
 	 margin-bottom: 65px;
+     color: #a3b1c6;
+     /*
 	 background-color: rgba(255,255,255,1);
 	 box-shadow: 0 5px 2px 0 rgba(240,240,240,0.5);
+     */
 }
+
+.item > img {
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 170px;
+    width: 270px;
+    object-fit: cover;
+    border-radius: 30px;
+    /*
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    */
+}
+
 .item-title {
-	font-size: 2em;
+    color: #2d3436;
+	font-size: 24px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.item-desc {
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+    color: #b2bec3;
 }
 
 .empty-item {
@@ -158,11 +192,11 @@ a.ref-links:hover {;
     height: 300px;
     flex: 0 1 auto;
     padding: 15px;
-    background-color: rgba(255,255,255,0.5);
     box-shadow: 0 0 0 0 rgba(240,240,240,0);
     border-radius: 15px;
 }
 
+/*
 .science:hover {
 	color: #007f4f;
 	border-color: #007f4f;
@@ -182,3 +216,4 @@ a.ref-links:hover {;
 	color: #101357;
 	border-color: #101357;
 }
+*/

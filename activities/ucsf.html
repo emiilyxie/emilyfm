@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/activities.css">
+		<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Alegreya|Lexend+Deca&display=swap" rel="stylesheet">
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  	<title>✌ UCSF Internship</title>
+	</head>
+
+	<body>
+		<!-- Navigation bar -->
+        <nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				<a class="navbar-brand ref-links page-scroll" href="../index.html">emily xie</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a class="ref-links page-scroll" href="./about.html">about me</a>
+					</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+    <p class="activity-header">UCSF Internship</p>
+    <div class="opening-blurb">During the whole cornonavirus summer, I was lucky enough to secure
+        an internship in the Center of Intelligent Imaging at UCSF. Here, I worked with Dr. Yan Li
+        and her group to create a machine learning model to filter artifacts in MRSI.</div>
+    <div class="main-text">
+      <div class="image-box">
+          <img src="../img/ucsf-img/ucsf-ci2.png"></img>
+      </div>
+      <div class="text-head">Overview</div>
+      <div class="text-body">First of all, for a brief overview of my project, <a href="../img/ucsf-img/final_presentation.pdf" target="_blank">
+          <u>here's my final presentation of the internship.</u></a>
+          It might be a little difficult to understand because it's so sciency, so I explain what's up in
+          <a href="./ucsf-guide.html"><u>this guide</u></a>.<br><br>
+          The rest of this page describes what I've learned from this experience, and I also have some cool
+          <a href="#visualizations"><u>interactive visualizations</u></a> down below!
+      </div>
+      <div class="text-head">Learning Curve</div>
+      <div class="text-body">
+          When I first started in June, I had no idea what MRSI was, and I only knew how to train a model using
+          a Google AutoML's graphical interface. I had to get grinding.<br><br>
+          Special thanks to these online resources for basically saving me:<br>
+          - <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6107370/" target="_blank"><u>A Convolutional Neural Network to Filter Artifacts in Spectroscopic Magnetic Resonance Imaging</u></a><br>
+          - <a href="http://mriquestions.com/index.html" target="_blank"><u>Questions and Answers in MRI website</u></a><br>
+          - <a href="https://www.deeplearningillustrated.com/" target="_blank"><u>Deep Learning Illustrated</u></a><br><br>
+          And now, here's a big list of the things I've learned. Contact me if you want some more details.<br>
+          - how to read binary data from a file<br>
+          - big vs. little endian<br>
+          - Python libraries: numpy, scikit-learn, pandas, tensorflow & keras, matplotlib, plotly<br>
+          - data visualizations (scroll down to play with them!)<br>
+          - Keras Sequential & Functional API<br>
+          - Fourier Transformations -- fft, fft shifts, apodization<br>
+          - How to present 2 months of work in < 3 mins
+      </div>
+      <div class="text-head">Reconstruction - The Side Project</div>
+      <div class="text-body">
+          I'd actually finished 80% of my main project by the first month. Dr. Li sent me a paper about reconstruction.<br><br>
+          Ok, really really quick explanation of MRSI reconstruction -- when the scanner scans something, it's
+          time-based. There is a long, complex pipeline taken to convert the time-based data into MRSI frequency-based
+          data. Sometimes, this complex pipeline can accidentally introduce artifacts. The pipeline is like:<br><br>
+          <div style="text-align: center">raw MRSI data -> file type conversion ->
+              spatial FFT -> time/freq FFT -> phase correction -> channel combination -> final output!</div><br>
+          So, the question here is "can we use machine learning to replace the MRSI reconstruction pipeline?" The
+          quick answer is maybe. I did end up training a model that did the reconstruction from the time/freq FFT step
+          to the final output step. Here's a picture of my result:
+          <div class="image-box">
+              <img class="center" src="../img/ucsf-img/reconstruction-voxel.png" width="500"></img>
+          </div>
+          <br>The blue line is the predicted result and the orange line is the actual final output. They overlap pretty
+          closely. However, the dataset that I had was extremely tiny, so I'm not sure whether the model overfit. Then,
+          I had to resume my artifact filtering project because I'd just gotten a bunch of new data. However, I'd love
+          to continue this project in the future to see if I can substitue MRSI reconstruction with ML.
+      </div>
+      <div class="text-head" id="visualizations">Visualizations</div>
+      <div class="text-body">As promised, here are some fun data visualizations I created along the way. These were
+          made for myself, mainly to make sure I was reading in the data correctly. Although, it did make some interesting plots.<br><br>
+          This data here is phantom data. This phantom data is basically a water droplet that contains the same metabolites
+          as an actual brain. The reason why I can't actually include real brain data in here is because I'd be sending out
+          private patient brain data, which is against UCSF policy.
+          <div id="freq"></div>
+          <br>This plot demonstrates that MRSI data actually consists of 4 dimensions: 3 spatial and 1 time/frequency. As you
+          move the slider, you can see how the color, or frequency, for each dot, or voxel, change. You can kind of see the shape
+          of the phantom water droplet inside of the plot.
+          <div id="freqslices"></div>
+          <br>This second plot simply shows you each slice of the brain, and it's fixed at a particular frequency.
+      </div>
+      <div class="text-head">Conclusion</div>
+      <div class="text-body">
+          Despite the ongoing pandemic, I really enjoyed this summer because of this internship.This internship was one
+          of the most challenging and rewarding experiences I've ever been through, pushing me to learn about radiology
+          and machine learning is such a short period of time. I was very fascinated with the MRSI data I got to process,
+          and the challenges that I faced were exciting rather than frustrating. I'm definitely interested in continuing
+          to learn about machine learning and applying these technologies to the health industry!
+      </div>
+      <div class="end-space"></div>
+    </div>
+
+
+	  <script src="../js/jquery.js"></script>
+	  <script src="../js/bootstrap.min.js"></script>  <!-- Bootstrap Core JavaScript -->
+	  <script src="../js/jquery.easing.min.js"></script> <!-- Plugin JavaScript -->
+	  <script src="../js/jquery.fittext.js"></script>
+	  <script src="../js/wow.min.js"></script>
+	  <script src="../js/creative.js"></script> <!-- Custom Theme Javascript -->
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script src="../js/ucsf.js"></script>
+
+	</body>
+</html>
