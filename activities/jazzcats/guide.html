@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/43a80914ff.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <style>
+            body {
+                font-family: "Gaegu", sans-serif;
+                height: 100%;
+                margin: 0px;
+                color: black;
+                text-align: center;
+                align-content: center;
+            }
+
+            ul, ol {
+                text-align: left;
+            }
+
+            .navbar {
+                width: 100%;
+                position: absolute;
+                text-align: left;
+                height: 40px;
+                font-size: 20px;
+                background-color: rgba(255, 255, 255, 0.5);
+                z-index: 10;
+            }
+
+            .navbar a {
+                display: block;
+                position: absolute;
+                margin-left: 30px;
+                margin-top: 10px;
+                color: black;
+                text-decoration: none;
+            }
+
+            .welcome-sect {
+                overflow: hidden;
+                height: 40vh;
+                background-image: url("../../img/jazzcats-img/cafe1.png");
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                padding-bottom: 30px;
+            }
+
+            #main-header {
+                position: absolute;
+                display: block;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 60px;
+                font-weight: bold;
+                padding: 10px 15px 10px 15px;
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+
+            .guides {
+                margin-left: 20%;
+                margin-right: 20%;
+            }
+
+            .guide-sect {
+                padding-bottom: 30px;
+            }
+
+            .guide-sect h2 {
+                font-weight: bold;
+                font-size: 30px;
+                margin-bottom: 2px;
+            }
+
+            .guide-desc {
+                text-align: left;
+                padding-bottom: 30px;
+                font-size: 24px;
+            }
+
+            .screenshot {
+                height: auto;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .cat-items {
+            	display: flex;
+                width: auto;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .cat-item {
+                margin-bottom: 60px;
+                width: 300px;
+                height: 300px;
+                flex: 0 1 auto;
+                border-radius: 30px;
+                border-color: black;
+                border-width: 2px;
+                background: rgb(250, 244, 225);
+                transition: all 0.2s ease;
+                position: relative;
+            }
+
+            .cat-item > img {
+                margin-top: 10px;
+                height: 200px;
+                width: 200px;
+                object-fit: cover;
+                border-radius: 30px;
+            }
+
+            .item-desc {
+                color: black;
+            	font-size: 30px;
+                margin-top: 220px;
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                text-align: center;
+                line-height: 1;
+            }
+
+            @media screen and (max-width:400px) {
+                .cat-item {
+                    width: 200px;
+                    height: 200px;
+                }
+                .cat-item > img {
+                    height: 150px;
+                    width: 150px;
+                }
+
+                .item-desc {
+                    margin-top: 150px;
+                    font-size: 20px;
+                }
+            }
+        </style>
+
+      	<title>Guide</title>
+	</head>
+
+	<body>
+        <div class="navbar"><a href="./main.html">Jazzcats!</a></div>
+
+        <div class="welcome-sect">
+            <div id="main-header">Guide</div>
+        </div>
+
+        <div class="guides">
+
+            <div class="guide-sect" id="about">
+                <h2>About</h2>
+                <i class="fas fa-angle-down" id="about-button"></i>
+                <div class="guide-content" id="about-content">
+                    <div class="guide-desc">Welcome to the world of Jazzcats! You’re an aspiring musician who
+                        wants to make it big in the jazz scene. Meowmo the cat has decided to guide you. Along
+                        the way, he will teach you an indispensable skill that all great musicians have -- the
+                        ability to transcribe music.<br><br>
+                        Music transcription is when you listen to music and translate what you hear into something
+                        you can see. Musicians transcribe music to improve their ear training skills, learn how
+                        other musicians construct their melodies, and gain inspiration for their own compositions.
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-sect" id="music-basics">
+                <h2>Music Basics</h2>
+                <i class="fas fa-angle-down" id="music-basics-button"></i>
+                <div class="guide-content" id="music-basics-content">
+                    <div class="guide-desc">There's some music terminology that is useful to know.</div>
+                    <img class="screenshot" src="../../img/jazzcats-img/musicinfo.png">
+                </div>
+            </div>
+
+            <div class="guide-sect" id="how-to-play">
+                <h2>How To Play</h2>
+                <i class="fas fa-angle-down" id="how-to-play-button"></i>
+                <div class="guide-content" id="how-to-play-content">
+                    <div class="guide-desc">Gameplay Mode</div>
+                    <img class="screenshot" src="../../img/jazzcats-img/level.png">
+                    <div class="guide-desc">
+                        <ul>
+                            <li>Home Button: Go back to the level select menu.</li>
+                            <li>Play Button: Play your composition</li>
+                            <li>Stop Button: Stop your composition</li>
+                            <li>Settings Button: Edit level settings (if applicable)
+                                <ul>
+                                    <li>
+                                        tempo
+                                    </li>
+                                    <li>
+                                        subdivision
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Audio Button: Listen to the audio to transcribe
+                                <ul>
+                                    <li>
+                                        tip: press again while the audio is playing to stop it
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Hint Button: Places a hint on the staff</li>
+                            <li>Submit Button: Submit your composition, and if it is correct, go to the next level</li>
+                            <li>Sharp/Flat Button: Enter sharp/flat mode, then tap on notes to be sharped or flatted</li>
+                            <li>Select Button: Choose a cat note to place on the staff</li>
+                            <li>Add Button: Enter add mode, tap on staff to add notes</li>
+                            <li>Erase Button: Enter erase mode, tap on notes to be erased</li>
+                            <li>Prev/Next Button: Navigate the pages in your composition</li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-desc">Freestyle Mode</div>
+                    <img class="screenshot" src="../../img/jazzcats-img/freestyle.png">
+                    <div class="guide-desc">Freestyle Mode is very similar to Gameplay Mode, but there are some more things you can do.<br>
+                        <ul>
+                            <li>Settings Button: Edit level settings
+                                <ul>
+                                    <li>tempo</li>
+                                    <li>measures per page</li>
+                                    <li>beats per measure</li>
+                                    <li>subdivision per beat</li>
+                                </ul>
+                            </li>
+                            <li>Share Button: Screen record your composition as a video</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-sect" id="meet-the-cats">
+                <h2>Meet the Cats!</h2>
+                <i class="fas fa-angle-down" id="meet-the-cats-button"></i>
+                <div class="guide-content" id="meet-the-cats-content">
+                    <div class="cat-items">
+                        <div class="cat-item">
+                            <div class="item-desc">Cat #1</div>
+                            <img src="../../img/jazzcats-img/cat_basic1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Cat #2</div>
+                            <img src="../../img/jazzcats-img/cat_basic2.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Duke</div>
+                            <img src="../../img/jazzcats-img/piano1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Charlie</div>
+                            <img src="../../img/jazzcats-img/saxophone1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Miles</div>
+                            <img src="../../img/jazzcats-img/trumpet1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">JJ</div>
+                            <img src="../../img/jazzcats-img/trombone1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Ron</div>
+                            <img src="../../img/jazzcats-img/bass1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Buddy</div>
+                            <img src="../../img/jazzcats-img/drumsnare1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Elvin</div>
+                            <img src="../../img/jazzcats-img/drumhihat1.png"></img>
+                        </div>
+                        <div class="cat-item">
+                            <div class="item-desc">Lionel</div>
+                            <img src="../../img/jazzcats-img/vibes1.png"></img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            $(".guide-content").hide();
+
+            $("#about-button").on("click", function() {
+                toggleSection("about");
+            });
+
+            $("#music-basics-button").on("click", function() {
+                toggleSection("music-basics");
+            });
+
+            $("#how-to-play-button").on("click", function() {
+                toggleSection("how-to-play");
+            });
+
+            $("#meet-the-cats-button").on("click", function() {
+                toggleSection("meet-the-cats");
+            });
+
+            function toggleSection(sectName) {
+                const button = $("#" + sectName + "-button");
+                const content = $("#" + sectName + "-content");
+                button.toggleClass("fa-angle-down");
+                button.toggleClass("fa-angle-up");
+                content.toggle();
+            }
+        </script>
+
+	</body>
+</html>

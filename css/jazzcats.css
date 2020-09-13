@@ -1,0 +1,113 @@
+body {
+    font-family: "Gaegu", sans-serif;
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+    color: black;
+    text-align: center;
+    align-content: center;
+}
+
+.welcome-sect {
+    height: 100vh;
+    background-image: url("../img/jazzcats-img/cafe1.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+#main-header {
+    position: absolute;
+    display: block;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    font-weight: bold;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.sub-header {
+    position: absolute;
+    left: 50%;
+    font-size: 30px;
+    width: 150px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: white;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    color: black;
+    text-decoration: none;
+}
+
+#guide-btn {
+    top: 60%;
+    transform: translate(-50%, 0%);
+}
+
+#feedback-btn {
+    top: 70%;
+    transform: translate(-50%, 0%);
+}
+
+#download-btn {
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%, 0%);
+}
+
+@media screen and (max-width:800px) {
+    #main-header {
+        font-size: 70px;
+        top: 30%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #guide-btn {
+        top: 50%;
+    }
+
+    #feedback-btn {
+        top: 60%;
+    }
+
+    #download-btn {
+        top: 75%;
+    }
+}
+
+@media screen and (max-height:450px) {
+    #main-header {
+        font-size: 70px;
+        top: 30%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .sub-header {
+        font-size: 15px;
+        width: 100px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-width: 2px;
+    }
+
+    #guide-btn {
+        top: 50%;
+    }
+
+    #feedback-btn {
+        top: 60%;
+    }
+
+    #download-btn {
+        top: 75%;
+    }
+}
